@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEmitterController } from './app.emitter.controller';
+import { AppManager } from './app.manager';
 
 @Module({
   imports: [
@@ -23,6 +24,6 @@ import { AppEmitterController } from './app.emitter.controller';
     ]),
   ],
   controllers: [AppController, AppEmitterController],
-  providers: [AppService],
+  providers: [AppManager, AppService],
 })
 export class AppModule {}

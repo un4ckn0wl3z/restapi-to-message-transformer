@@ -10,7 +10,6 @@ export class AppService {
   ) {
     
   }
-
   async testTransform(data: any): Promise<any> {
     await this.eventPublisherClient.emit('test.request.topic', data);
   }
