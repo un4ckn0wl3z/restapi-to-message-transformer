@@ -9,7 +9,7 @@ export class AppController {
   ) {}
 
   @Post("test/transform")
-  async handleTestTransformRequest(@Body() requestBody: any, @Res() response: Response) {
+  handleTestTransformRequest(@Body() requestBody: any, @Res() response: Response) {
     this.manager.handleTestTransformRequest(requestBody, response);
   }
 
