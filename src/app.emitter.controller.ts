@@ -10,7 +10,7 @@ export class AppEmitterController {
 ) {}
 
   @EventPattern('test.request.topic')
-  async testTransformResponse(@Payload() request: any): Promise<void> {
+    testTransformResponse(@Payload() request: any) {
     console.log("Received response from transformer message queue: ", request);
     this.eventEmitter.emit(request.id, request);
   }
