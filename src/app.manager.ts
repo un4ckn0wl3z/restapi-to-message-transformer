@@ -11,6 +11,7 @@ export class AppManager {
       ) {}
 
     async handleTestTransformRequest(request: any, response: Response): Promise<any> {
+      try {
         await this.appService.testTransform(request);
         const ack = await new Promise((resolve, reject) => {
           this.eventEmitter.on(request.header.session, (data) => {
@@ -19,5 +20,8 @@ export class AppManager {
           })
         });
         return response.status(200).json(ack);
+      } catch (error) {
+        return response.status(400).json({ error: error.message });
+      }
       }
 }

@@ -18,8 +18,12 @@ private emitAsync(session: string, request: any): Promise<void> {
 
   @EventPattern('test.request.topic')
     testTransformResponse(@Payload() request: any) {
-    console.log("Received response from transformer message queue: ", request);
-    this.emitAsync(request.header.session, request);
+      try {
+        console.log("Received response from transformer message queue: ", request);
+        this.emitAsync(request.header.session, request);
+      } catch (error) {
+        console.error("Error processing response from transformer message queue: ", error);
+      }
   }
 
 }
