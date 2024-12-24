@@ -1,7 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { EventPattern, Payload } from '@nestjs/microservices';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { sleep } from './app.util';
 
 @Controller()
 export class AppEmitterController {
