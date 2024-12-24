@@ -13,7 +13,7 @@ export class AppManager {
     async handleTestTransformRequest(request: any, response: Response): Promise<any> {
         await this.appService.testTransform(request);
         const ack = await new Promise((resolve, reject) => {
-          this.eventEmitter.on(request.id, (data) => {
+          this.eventEmitter.on(request.header.session, (data) => {
             console.log("Received ack from transformer service: ", data);
             resolve(data);
           })
